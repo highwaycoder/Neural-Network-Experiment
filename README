@@ -1,0 +1,101 @@
+Summary of changes:
+	v0.4 -> v0.5 (Chris changed:)
+	added strobeSensor and wallSensor to Robot
+	
+	v0.3 -> v0.4 (Spoon changed:)
+	Removed Robot.heading
+	Removed RobotScores and replaced with Population
+	Moved robot creation and reproduction into Population (this makes main much shorter!)
+	Made Robot an implementation of Individual
+	Made RobotGenome an implementation of Genome
+	Individuals are now created by Genome.getIndividual()
+	Rearranged the order of class definitions
+
+	v0.2 -> v0.3 (Chris changed:)
+	return value of "tick()" to allow us to convert the step function into a sigmoidal one for smoother control
+	added genetic recombination stuff to allow for faster, more efficient mutation (see comment above main())
+	NB: we only technically need >3 robots in our gene pool, but the bigger the gene pool the faster it works
+	Also neatened up ChangeLog portion and moved it to the top of the file (where I believe it should belong)
+	
+	v0.1 -> v0.2 (Spoon changed:)
+	MapSimulation now doesn't know about robots, just Items (Robot is an Item).
+	Changed the names of Cell, Contains to MapItem, Item. Cells is a property of MapSimulation.
+	Tried to make it clearer how the neural network could be put together.
+	Created a Genome class, which defines the shape of the network and the weights for a particular individual.
+		Wasn't sure about NEURONS_PER_LAYER. Are there the same number of neurons in each layer?
+		Genome has numberOfNeuronsInLayers, e.g. [5, 5, 3] is a 3-layer net with 5 neurons in first and second layers and 3 in last.
+		I could have extended Genome with RobotGenome which has a definite shape (maybe that would be better).
+	I changed main a bit too; i think it's a bit clearer.
+
+--END CHANGELOG--
+
+	MapSimulation(int width, int height):
+		MapItem[] items,
+		Item getItemAt(x, y)
+		void setItemAt(x,y,item);
+
+	MapItem(int xpos, int ypos, Item item):
+		int xpos, 
+		int ypos,
+		Item item
+
+	Enum Item:
+		WALL, MINE, ROBOT, ...
+
+	Population(Genome g, int size):
+		Individual[] indivuduals,
+		void simulate(int numberOfTicks),
+		void nextGeneration(), //perform reproduction and mutation to get a new array of individuals
+		Genome currentGenome()
+
+	Interface Individual:
+		MapSimulation map,
+		NeuralNet neuralNet,
+		int score, //updated after every tick with -n for crashes and +m for sought objects
+		void tick() //call neuralNet.tick() and update world, xpos, ypos, score
+
+	Robot implements Individual(MapSimulation map, NeuralNetwork net):
+		MapSimulation map,
+		Item[] seeking,
+		Item[] avoiding,
+		int xpos,
+		int ypos,
+		int strobeSensor, // radar/sonar sensor that can tell us how close we are to a seekable
+		int wallSensor, // lidar sensor that can tell us what is directly in front of the robot (and how far away it is)
+		NeuralNet neuralNet,
+		int score, //updated after every tick with -n for crashes and +m for sought objects
+		void tick() //call neuralNet.tick() and update world, xpos, ypos, score
+		Genome mate(Robot partner); // allowing genetic recombination (faster, more efficient evolution)
+
+	Interface Genome():
+		int[] numberOfNeuronsInLayers,
+		int[] weights //length is the sum of the number of links between layers
+				// number of links = neurons in first layer * neurons in second layer
+		Individual getIndividual()
+
+	RobotGenome implements Genome():
+		int[] numberOfNeuronsInLayers,
+		int[] weights //length is the sum of the number of links between layers
+				// number of links = neurons in first layer * neurons in second layer
+		Robot getIndividual()
+
+	NeuralNet(Genome g):
+		NeuronLayer[] layers,
+		int[] tick(int[] input) //call tick for each layer in turn passing result layer to layer
+
+	NeuronLayer(int numerOfNeurons, int[] weights):
+		Neuron[] neurons,
+		int[] tick(int[] input) //call tick for each neuron in layer
+
+	Neuron(int[] weights):
+		int[] weights,
+		int tick(int[] input)  //apply weights to each input.  Returns how much power to drive the track with
+
+
+main():
+	Population pop = new Population(new RobotGenome(randomized_int_array), SIZE_OF_POPULATION)
+	for(NUMBER_OF_GENERATIONS):
+		pop.simulate(NUMBER_OF_TICKS)
+		pop.nextGeneration()
+	
+	RobotGenome g = pop.currentGenome()
