@@ -4,14 +4,14 @@
 
 class Genome
 {
-		Individual getIndividual();
-		virtual int* getShape();
-		virtual double* getWeights();
-		virtual int numOfInputs();
-		virtual int numOfOutputs();
 		public:
 			Genome(){};
 			~Genome(){};
+			Individual getIndividual();
+			virtual int* getShape();
+			virtual double* getWeights();
+			virtual int numOfInputs();
+			virtual int numOfOutputs();
 };
 
 #endif // _GENOME_H
