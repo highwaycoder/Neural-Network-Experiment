@@ -12,7 +12,7 @@ Neuron::Neuron(const double weights[],int numOfWeights)
 	}
 	myNumOfWeights = numOfWeights;
 }
-Neuron::double tick(double input[])
+double Neuron::tick(double input[])
 {
 	int i;
 	double rv;
@@ -33,7 +33,7 @@ NeuronLayer::NeuronLayer(int numNeurons,const double weights[],int numWeights)
 	}
 	myNumNeurons = numNeurons;
 }
-NeuronLayer::double* tick(double* input)
+double* NeuronLayer::tick(double* input)
 {
 	int i;
 	double* output;
@@ -46,20 +46,24 @@ NeuronLayer::double* tick(double* input)
 
 NeuralNet::NeuralNet(Genome* g)
 {
-	int* shape = g.getShape();
-	double* weights = g.getWeights();
-	int i,weightsIndex=0,numOfWeights=0;
+	int* shape = g->getShape();
+	double* weights = g->getWeights();
+	int i,
+		weightsIndex=0,
+		numOfWeights=0;
+
 	numberOfLayers = sizeof(shape) / sizeof(shape[0]);
 	for(i=0;i<numberOfLayers;i++)
 	{
-		numOfWeights = i==0?shape[i]*g.numOfInputs():shape[i]*shape[i-1];
-		NeuronLayer[i] = new NeuronLayer(shape[i],weights[weightsIndex],numOfWeights);
+		numOfWeights = i==0?shape[i]*g->numOfInputs():shape[i]*shape[i-1];
+		
+		layers[i] = NeuronLayer(shape[i],weights[weightsIndex],numOfWeights);
 		weightsIndex += numOfWeights;
 	}
 }
 
 // call tick for each layer in turn passing result layer to layer
-NeuralNet::double* tick(double* input)
+double* NeuralNet::tick(double* input)
 {
 	int i;
 	for(i=0;i<numberOfLayers;i++)
