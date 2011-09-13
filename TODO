@@ -7,7 +7,7 @@ Compiles:
 	NeuralNetwork.hpp
 	Robot.hpp
 	MapSimulation.hpp
-	RobotGenome.hpp - NOTE: this has been 'gagged' by removing the 'virtual' keyword from a function in Genome.hpp
+	RobotGenome.hpp
 	Robot.cpp
 	RobotGenome.cpp
 	NeuralNetwork.cpp
