@@ -11,3 +11,10 @@ robotTester: main.cpp $(OBJS)
 
 %.o: %.cpp
 	$(CC) $(CXXFLAGS) -o $*.o -c $*.cpp
+
+clean:
+	@rm -f $(OBJS)
+	@rm -f robotTester
+
+clean-geany:
+	@rm -f *.gch
