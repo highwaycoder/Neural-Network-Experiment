@@ -21,6 +21,7 @@ bool MapSimulation::setItemAt(int x,int y, Item item)
 			items[i].setItem(item);
 			success = true;
 		}
+		i++;
 	}
 	return success;
 }
