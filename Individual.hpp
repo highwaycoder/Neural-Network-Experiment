@@ -3,9 +3,9 @@
 
 class Individual
 {
-		// call neuralNet.tick() and update world, xpos, ypos, score
-		virtual void tick() {};
 		public:
+			// call neuralNet.tick() and update world, xpos, ypos, score
+			virtual void tick() {};
 			~Individual(){};
 			Individual(){};
 };
