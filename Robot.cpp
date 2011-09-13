@@ -16,10 +16,10 @@ Robot::Robot(MapSimulation map, NeuralNet net)
 }
 void Robot::tick()
 {
-	double* output;
+	double output[] = {0};
 	double input[] = {strobeSensor,wallSensor};
 	// call neuralNet.tick() and update world, xpos, ypos, score
-	output = neuralNet.tick(input);
+	neuralNet.tick(input,output);
 	leftMotorSpeed = output[0];
 	rightMotorSpeed = output[1];
 	heading += (rightMotorSpeed - leftMotorSpeed);
