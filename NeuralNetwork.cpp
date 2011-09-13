@@ -57,7 +57,7 @@ NeuralNet::NeuralNet(Genome* g)
 	{
 		numOfWeights = i==0?shape[i]*g->numOfInputs():shape[i]*shape[i-1];
 		
-		layers[i] = NeuronLayer(shape[i],weights[weightsIndex],numOfWeights);
+		layers[i] = NeuronLayer(shape[i], weights + weightsIndex, numOfWeights);
 		weightsIndex += numOfWeights;
 	}
 }
