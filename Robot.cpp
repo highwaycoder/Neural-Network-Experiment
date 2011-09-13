@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <time.h>
 #include <math.h>
 #include <iostream>
 #include "Individual.hpp"
@@ -9,17 +11,34 @@
 #include "Item.hpp"
 
 using namespace std;
-
-Robot::Robot(MapSimulation map, NeuralNet net)
+Robot::Robot(MapSimulation *mapsim, NeuralNet *net)
 {
-	
+	map = mapsim;
+	neuralNet = net;
+	int *x;
+	int *y;
+	//TODO: Uncomment the next line
+	//map->getRandomFreePosition(x, y);
+	xpos = *x;
+	ypos = *y;
+	srand(time(NULL));
+	heading = random() % 360;
+
+	//TODO: feed data to these
+	strobeSensor = 0;
+	wallSensor = 0;
+
+	leftMotorSpeed = 0;
+	rightMotorSpeed = 0;
+
+	score = 0;
 }
 void Robot::tick()
 {
 	double output[] = {0};
 	double input[] = {strobeSensor,wallSensor};
 	// call neuralNet.tick() and update world, xpos, ypos, score
-	neuralNet.tick(input,output);
+	neuralNet->tick(input,output);
 	leftMotorSpeed = output[0];
 	rightMotorSpeed = output[1];
 	heading += (rightMotorSpeed - leftMotorSpeed);
@@ -31,15 +50,15 @@ void Robot::tick()
 	ypos += sin(heading/M_PI);
 	if(!(xpos==oldx && ypos==oldy))
 	{
-		if(map.getItemAt(xpos,ypos)==EMPTY)
+		if(map->getItemAt(xpos,ypos)==EMPTY)
 		{
 			score -= MOVE_PENALTY;
 		}
-		else if(isItemSought(map.getItemAt(xpos,ypos)))
+		else if(isItemSought(map->getItemAt(xpos,ypos)))
 		{
 			score += SOUGHT_REWARD;
 		}
-		else if (map.getItemAt(xpos,ypos)==WALL)
+		else if (map->getItemAt(xpos,ypos)==WALL)
 		{
 			score -= CRASHED_PENALTY;
 			xpos = oldx;
@@ -49,9 +68,9 @@ void Robot::tick()
 		{
 			score -= CRASHED_PENALTY;
 		}
-		if(!map.setItemAt(xpos,ypos,ROBOT))
+		if(!map->setItemAt(xpos,ypos,ROBOT))
 			runtimeError(E_CANTSETITEM,xpos,ypos);
-		if(!map.setItemAt(oldx,oldy,EMPTY))
+		if(!map->setItemAt(oldx,oldy,EMPTY))
 			runtimeError(E_CANTSETITEM,xpos,ypos);
 	}
 	else

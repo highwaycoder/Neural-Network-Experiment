@@ -23,16 +23,16 @@ class Robot : public Individual
 		int ypos;
 		double strobeSensor; // radar/sonar sensor that can tell us how close we are to a seekable
 		double wallSensor; // lidar sensor that can tell us what is directly in front of the robot (and how far away it is)
-		NeuralNet neuralNet;
+		NeuralNet *neuralNet;
 		int score; //updated after every tick with -n for crashes and +m for sought objects
-		MapSimulation map;
+		MapSimulation *map;
 		Item* seeking;
 		Item* avoiding;
 		int leftMotorSpeed;
 		int rightMotorSpeed;
 		int heading;
 	public:
-		Robot(MapSimulation map, NeuralNet net);
+		Robot(MapSimulation *map, NeuralNet *net);
 		void tick();
 		bool isItemSought(int item);
 		Genome mate(Robot partner);
