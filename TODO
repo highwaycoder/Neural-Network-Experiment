@@ -14,3 +14,15 @@ Compiles:
 Does not compile:
 	main.cpp
 	
+Unwritten methods:
+	RobotGenome::~RobotGenome() 
+	Robot::Robot(MapSimulation map, NeuralNet net)
+	MapSimulation::MapSimulation(int width, int height)
+	MapItem::MapItem(int xpos, int ypos, Item item)
+	
+Incomplete methods:
+
+Unwritten classes:
+	Population
+	
+Incomplete classes:
