@@ -1,6 +1,6 @@
 #ifndef _MAPSIMULATION_H
 #define _MAPSIMULATION_H
-
+#include "Item.hpp"
 class MapSimulation
 {
 		MapItem* items;
