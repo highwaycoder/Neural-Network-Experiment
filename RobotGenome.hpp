@@ -14,17 +14,17 @@
 #include "Genome.hpp"
 #include "MapSimulation.hpp"
 
-class RobotGenome : Genome
+class RobotGenome : public Genome
 {
 		int numberOfNeuronsInLayers[NUM_LAYERS];
 		double* weights; //length is the sum of the number of links between layers
 				// number of links = neurons in first layer * neurons in second layer
 		public:
 			~RobotGenome();
-			Robot getIndividual(MapSimulation map);
+			virtual Robot *getIndividual(MapSimulation map);
 			RobotGenome();
 			RobotGenome(double w[]);
-			Robot getIndividual();
+			virtual Robot *getIndividual();
 			int* getShape();
 			double* getWeights();
 			int numOfInputs();

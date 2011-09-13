@@ -7,7 +7,7 @@ class Genome
 		public:
 			Genome(){};
 			~Genome(){};
-			Individual getIndividual();
+			virtual Individual *getIndividual();
 			virtual int* getShape();
 			virtual double* getWeights();
 			virtual int numOfInputs();

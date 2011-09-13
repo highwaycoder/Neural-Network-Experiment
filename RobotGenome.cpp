@@ -19,10 +19,10 @@ RobotGenome::RobotGenome(double w[])
 {
 	weights = w;
 }
-Robot RobotGenome::getIndividual(MapSimulation map)
+Robot *RobotGenome::getIndividual(MapSimulation map)
 {	
 	NeuralNet net(this);
-	return Robot(map,net);
+	return new Robot(map,net);
 }
 int* RobotGenome:: getShape()
 {

@@ -16,7 +16,7 @@ enum Score_Modifier_t {
 	CRASHED_PENALTY=5
 };
 
-class Robot : Individual
+class Robot : public Individual
 {
 	private:
 		int xpos;
