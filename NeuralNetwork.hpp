@@ -19,7 +19,7 @@ class NeuronLayer
 		int myNumNeurons;
 	public:
 		NeuronLayer(int numNeurons,const double weights[],int numWeights);
-		double* tick(double* input);
+		void tick(double* input,double* output);
 };
 
 class NeuralNet
@@ -31,7 +31,7 @@ class NeuralNet
 			NeuralNet();
 			NeuralNet(Genome* g);
 		
-			double* tick(double* input);
+			void tick(double* input,double* output);
 };
 
 

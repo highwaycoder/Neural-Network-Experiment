@@ -10,7 +10,19 @@ Compiles:
 	RobotGenome.hpp - NOTE: this has been 'gagged' by removing the 'virtual' keyword from a function in Genome.hpp
 	Robot.cpp
 	RobotGenome.cpp
+	NeuralNetwork.cpp
 Does not compile:
 	main.cpp
-	NeuralNetwork.cpp
 	
+Unwritten methods:
+	RobotGenome::~RobotGenome() 
+	Robot::Robot(MapSimulation map, NeuralNet net)
+	MapSimulation::MapSimulation(int width, int height)
+	MapItem::MapItem(int xpos, int ypos, Item item)
+	
+Incomplete methods:
+
+Unwritten classes:
+	Population
+	
+Incomplete classes:
