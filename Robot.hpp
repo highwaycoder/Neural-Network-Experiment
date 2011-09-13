@@ -1,5 +1,13 @@
 #ifndef _ROBOT_H
 #define _ROBOT_H
+#include "MapSimulation.hpp"
+#include "NeuralNetwork.hpp"
+#include "Item.hpp"
+#include "Genome.hpp"
+
+enum Error_t {
+	E_CANTSETITEM,
+};
 
 class Robot : Individual
 {
@@ -17,10 +25,12 @@ class Robot : Individual
 		int rightMotorSpeed;
 		int heading;
 	public:
-		Robot(MapSimulation map, NeuralNetwork net);
+		Robot(MapSimulation map, NeuralNet net);
 		void tick();
 		bool isItemSought(int item);
 		Genome mate(Robot partner);
+		void runtimeError(Error_t errorType);
+		void runtimeError(Error_t errorType, int arg1, int arg2);
 };
 
 #endif // _ROBOT_H

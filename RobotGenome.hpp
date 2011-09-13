@@ -10,6 +10,7 @@
 #ifndef _XOPEN_SOURCE
 #define _XOPEN_SOURCE
 #endif
+#include "Robot.hpp"
 
 class RobotGenome : Genome
 {
@@ -27,7 +28,7 @@ class RobotGenome : Genome
 			int numOfOutputs();
 		private:
 			double* initRandom();
-}
+};
 
 
 #endif // _ROBOTGENOME_CPP

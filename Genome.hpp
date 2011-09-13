@@ -1,15 +1,16 @@
 #ifndef _GENOME_H
 #define _GENOME_H
+#include "Individual.hpp"
 
 class Genome
 {
-		
-		virtual Individual getIndividual() = 0;
-		virtual int* getShape() = 0;
-		virtual double* getWeights() = 0;
-		virtual int numOfInputs() = 0;
-		virtual int numOfOutputs() = 0;
+		virtual Individual getIndividual();
+		virtual int* getShape();
+		virtual double* getWeights();
+		virtual int numOfInputs();
+		virtual int numOfOutputs();
 		public:
+			Genome(){};
 			virtual ~Genome(){};
 };
 

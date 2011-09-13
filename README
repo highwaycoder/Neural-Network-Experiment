@@ -1,3 +1,14 @@
+Release version: N/A (no compilable version available)
+Authors: Chris Browne <chris@pemcjd.me.uk>
+		 James Ward <>
+Platforms:
+	Confirmed to work on:
+	Binary releases available for:
+
+--- PSUEDOCODE ---
+
+We originally worked from this Psuedocode:
+
 Summary of changes:
 	v0.4 -> v0.5 (Chris changed:)
 	added strobeSensor and wallSensor to Robot

@@ -1,5 +1,6 @@
 #ifndef _NEURALNET_H
 #define _NEURALNET_H
+#include "Genome.hpp"
 
 class Neuron
 {
@@ -9,7 +10,7 @@ class Neuron
 	public:
 		Neuron(const double weights[],int numOfWeights);
 		double tick(double input[]);
-}
+};
 
 class NeuronLayer
 {
@@ -19,7 +20,7 @@ class NeuronLayer
 	public:
 		NeuronLayer(int numNeurons,const double weights[],int numWeights);
 		double* tick(double* input);
-}
+};
 
 class NeuralNet
 {
@@ -27,10 +28,11 @@ class NeuralNet
 			NeuronLayer layers[];
 			int numberOfLayers;
 		public:
+			NeuralNet();
 			NeuralNet(Genome* g);
 		
 			double* tick(double* input);
-}
+};
 
 
 
