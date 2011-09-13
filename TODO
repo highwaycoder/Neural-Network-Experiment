@@ -10,7 +10,7 @@ Compiles:
 	RobotGenome.hpp - NOTE: this has been 'gagged' by removing the 'virtual' keyword from a function in Genome.hpp
 	Robot.cpp
 	RobotGenome.cpp
+	NeuralNetwork.cpp
 Does not compile:
 	main.cpp
-	NeuralNetwork.cpp
 	
