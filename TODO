@@ -20,7 +20,6 @@ Unwritten methods:
 	MapSimulation::MapSimulation(int width, int height)
 	MapItem::MapItem(int xpos, int ypos, Item item)
 	void Population::nextGeneration()
-	void Population::simulate(int numberOfTicks)
 	
 	
 Incomplete methods:
