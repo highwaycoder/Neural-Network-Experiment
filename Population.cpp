@@ -9,11 +9,20 @@ void Population::nextGeneration()
 {
 	
 }
-Genome Population::currentGenome();
+Genome Population::getCurrentGenome()
 {
-	
+	return currentGenome;
 }
-Population::Population(Genome g,unsigned int size);
+void Population::populate(Genome g, unsigned int size)
 {
-	
+	unsigned int i=0;
+	while(i<size)
+	{
+		individuals[i] = g.getIndividual();
+		i++;
+	}
+}
+Population::Population(Genome g,unsigned int size)
+{
+	populate(g,size);
 }

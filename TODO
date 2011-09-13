@@ -19,8 +19,6 @@ Unwritten methods:
 	Robot::Robot(MapSimulation map, NeuralNet net)
 	MapSimulation::MapSimulation(int width, int height)
 	MapItem::MapItem(int xpos, int ypos, Item item)
-	Population::Population(Genome g,unsigned int size)
-	Genome Population::currentGenome()
 	void Population::nextGeneration()
 	void Population::simulate(int numberOfTicks)
 	
