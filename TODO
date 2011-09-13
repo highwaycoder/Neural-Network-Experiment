@@ -6,10 +6,11 @@ Compiles:
 	Genome.hpp
 	NeuralNetwork.hpp
 	Robot.hpp
-Does not compile:
-	main.cpp
 	MapSimulation.hpp
-	NeuralNetwork.cpp
+	RobotGenome.hpp - NOTE: this has been 'gagged' by removing the 'virtual' keyword from a function in Genome.hpp
 	Robot.cpp
 	RobotGenome.cpp
-	RobotGenome.hpp
+Does not compile:
+	main.cpp
+	NeuralNetwork.cpp
+	

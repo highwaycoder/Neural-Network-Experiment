@@ -29,3 +29,7 @@ MapSimulation::MapSimulation(int width, int height)
 {
 	
 }
+MapSimulation::MapSimulation()
+{
+	MapSimulation(DEFAULT_WIDTH,DEFAULT_HEIGHT);
+}

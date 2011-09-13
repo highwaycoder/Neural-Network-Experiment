@@ -5,46 +5,49 @@
 #include "NeuralNetwork.hpp"
 #include "Robot.hpp"
 #include "RobotGenome.hpp"
+#include "MapSimulation.hpp"
 
-RobotGenome::~RobotGenome() {}
+RobotGenome::~RobotGenome() 
+{
+	
+}
 RobotGenome::RobotGenome()
 {
-	weights = initRandom();
+	initRandom(weights);
 }
 RobotGenome::RobotGenome(double w[])
 {
 	weights = w;
 }
-RobotGenome::Robot getIndividual()
-{
-	return new Robot();
+Robot RobotGenome::getIndividual(MapSimulation map)
+{	
+	NeuralNet net(this);
+	return Robot(map,net);
 }
-RobotGenome::int* getShape()
+int* RobotGenome:: getShape()
 {
 	numberOfNeuronsInLayers[0] = LAYERA_NEURONS;
 	numberOfNeuronsInLayers[1] = LAYERB_NEURONS;
 	return numberOfNeuronsInLayers;
 }
-RobotGenome::double* getWeights()
+double* RobotGenome::getWeights()
 {
 	return weights;
 }
-RobotGenome::int numOfInputs()
+int RobotGenome::numOfInputs()
 {
 	return NUM_INPUTS;
 }
-RobotGenome::int numOfOutputs()
+int RobotGenome::numOfOutputs()
 {
 	return NUM_OUTPUTS;
 }
-RobotGenome::double* initRandom()
+void RobotGenome::initRandom(double* w)
 {
 	int i;
-	double* rv;
 	srand(time(NULL));
 	for(i=0;i < (NUM_INPUTS*LAYERA_NEURONS)+(LAYERA_NEURONS*LAYERB_NEURONS);i++)
 	{
-		rv[i] = (drand48()*2)-1;
+		w[i] = (drand48()*2)-1;
 	}
-	return rv;
 }

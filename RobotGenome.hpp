@@ -1,5 +1,5 @@
-#ifndef _ROBOTGENOME_CPP
-#define _ROBOTGENOME_CPP
+#ifndef _ROBOTGENOME_H
+#define _ROBOTGENOME_H
 
 #define NUM_LAYERS 2
 #define LAYERA_NEURONS 5
@@ -11,6 +11,8 @@
 #define _XOPEN_SOURCE
 #endif
 #include "Robot.hpp"
+#include "Genome.hpp"
+#include "MapSimulation.hpp"
 
 class RobotGenome : Genome
 {
@@ -18,7 +20,8 @@ class RobotGenome : Genome
 		double* weights; //length is the sum of the number of links between layers
 				// number of links = neurons in first layer * neurons in second layer
 		public:
-			~RobotGenome() {}
+			~RobotGenome();
+			Robot getIndividual(MapSimulation map);
 			RobotGenome();
 			RobotGenome(double w[]);
 			Robot getIndividual();
@@ -27,8 +30,8 @@ class RobotGenome : Genome
 			int numOfInputs();
 			int numOfOutputs();
 		private:
-			double* initRandom();
+			void initRandom(double* w);
 };
 
 
-#endif // _ROBOTGENOME_CPP
+#endif // _ROBOTGENOME_H

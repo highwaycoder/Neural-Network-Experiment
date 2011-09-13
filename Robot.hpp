@@ -4,9 +4,16 @@
 #include "NeuralNetwork.hpp"
 #include "Item.hpp"
 #include "Genome.hpp"
+#include "Individual.hpp"
 
 enum Error_t {
 	E_CANTSETITEM,
+};
+
+enum Score_Modifier_t {
+	MOVE_PENALTY=1,
+	SOUGHT_REWARD=1,
+	CRASHED_PENALTY=5
 };
 
 class Robot : Individual
