@@ -1,0 +1,15 @@
+Compiles:
+	Item.cpp
+	Item.hpp
+	MapSimulation.cpp
+	Individual.hpp
+	Genome.hpp
+	NeuralNetwork.hpp
+	Robot.hpp
+Does not compile:
+	main.cpp
+	MapSimulation.hpp
+	NeuralNetwork.cpp
+	Robot.cpp
+	RobotGenome.cpp
+	RobotGenome.hpp
