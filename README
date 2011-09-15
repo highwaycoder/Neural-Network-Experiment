@@ -1,9 +1,11 @@
-Release version: N/A (no compilable version available)
+Release version: N/A (no runnable version available)
 Authors: Chris Browne <chris@pemcjd.me.uk>
 		 James Ward <>
 Platforms:
 	Confirmed to work on:
 	Binary releases available for:
+
+Current Status: compiles, no seg faults, infinite(?) loop without output
 
 --- PSUEDOCODE ---
 
