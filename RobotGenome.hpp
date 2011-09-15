@@ -21,10 +21,10 @@ class RobotGenome : public Genome
 				// number of links = neurons in first layer * neurons in second layer
 		public:
 			~RobotGenome();
-			virtual void getIndividual(MapSimulation map,Robot *dst);
+			void getIndividual(MapSimulation map,Robot *dst);
 			RobotGenome();
 			RobotGenome(double w[]);
-			virtual Robot *getIndividual();
+			Robot *getIndividual();
 			int* getShape();
 			double* getWeights();
 			int numOfInputs();

@@ -4,7 +4,7 @@ CC=g++
 LDFLAGS=
 CXXFLAGS=
 # IMPORTANT: PRESERVE ORDER
-OBJS=Robot.o RobotGenome.o NeuralNetwork.o MapSimulation.o Population.o Item.o
+OBJS=RobotGenome.o NeuralNetwork.o Robot.o Population.o Item.o MapSimulation.o
 
 robotTester: main.cpp $(OBJS)
 	$(CC) $(LDFLAGS) -o robotTester main.cpp $(OBJS)
@@ -15,6 +15,7 @@ robotTester: main.cpp $(OBJS)
 clean:
 	@rm -f $(OBJS)
 	@rm -f robotTester
+	@rm -f main.o
 
 clean-geany:
 	@rm -f *.gch

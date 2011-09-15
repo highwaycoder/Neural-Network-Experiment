@@ -6,12 +6,11 @@ class Genome
 {
 		public:
 			Genome(){};
-			~Genome(){};
-			virtual void getIndividual(Individual *dst);
-			virtual int* getShape();
-			virtual double* getWeights();
-			virtual int numOfInputs();
-			virtual int numOfOutputs();
+			virtual void getIndividual(Individual *dst){};
+			virtual int* getShape(){};
+			virtual double* getWeights(){};
+			virtual int numOfInputs(){};
+			virtual int numOfOutputs(){};
 };
 
 #endif // _GENOME_H

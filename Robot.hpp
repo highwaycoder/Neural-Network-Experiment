@@ -35,7 +35,7 @@ class Robot : public Individual
 		Robot(MapSimulation *map, NeuralNet *net);
 		void tick();
 		bool isItemSought(int item);
-		Genome mate(Robot partner);
+		Genome* mate(Robot partner);
 		void runtimeError(Error_t errorType);
 		void runtimeError(Error_t errorType, int arg1, int arg2);
 };

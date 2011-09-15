@@ -18,19 +18,19 @@ void Population::nextGeneration()
 {
 	
 }
-Genome Population::getCurrentGenome()
+Genome* Population::getCurrentGenome()
 {
 	return currentGenome;
 }
-void Population::populate(Genome g, unsigned int size)
+void Population::populate(Genome* g, unsigned int size)
 {
 	unsigned int i=0;
 	while(i<size)
 	{
-		g.getIndividual(&individuals[i]);
+		g->getIndividual(&individuals[i]);
 	}
 }
-Population::Population(Genome g,unsigned int size)
+Population::Population(Genome* g,unsigned int size)
 {
 	populate(g,size);
 }

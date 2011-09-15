@@ -8,7 +8,8 @@
 int main(void)
 {
 	int i=0;
-	Population pop = Population(RobotGenome(), SIZE_OF_POPULATION);
+	RobotGenome startGenome = RobotGenome();
+	Population pop = Population(&startGenome, SIZE_OF_POPULATION);
 	for(i=0;i<NUMBER_OF_GENERATIONS;i++)
 	{
 		pop.simulate(NUMBER_OF_TICKS);

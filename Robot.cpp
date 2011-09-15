@@ -88,9 +88,9 @@ bool Robot::isItemSought(int item)
 	return 0;
 }
 // allow genetic recombination (faster, more efficient evolution)
-Genome Robot::mate(Robot partner)
+Genome* Robot::mate(Robot partner)
 {
-	Genome rv;
+	Genome* rv;
 	// TODO: complete stub function
 	return rv;
 }
