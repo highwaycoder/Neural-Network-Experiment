@@ -1,5 +1,3 @@
-# NB: this makefile does not use header dependancies
-# this is a major issue which will be addressed in future versions.
 CC=g++
 LDFLAGS=
 CXXFLAGS=
@@ -9,7 +7,7 @@ OBJS=RobotGenome.o NeuralNetwork.o Robot.o Population.o Item.o MapSimulation.o
 robotTester: main.cpp $(OBJS)
 	$(CC) $(LDFLAGS) -o robotTester main.cpp $(OBJS)
 
-%.o: %.cpp
+%.o: %.cpp %.hpp
 	$(CC) $(CXXFLAGS) -o $*.o -c $*.cpp
 
 clean:
