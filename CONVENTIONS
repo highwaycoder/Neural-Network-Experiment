@@ -1,0 +1,36 @@
+Files to be compiled into an object must take the form:
+FileName.cpp
+and be accompanied by a file called:
+FileName.hpp
+Note that the names must be IDENTICAL.
+
+Code example:
+returnType methodName(argType argument)
+{
+  returnType rv=0; // if necessary
+  ObjectType InstanceName;
+  if(expression==true)
+    singleLineIfStatements(); // are ok
+  while(expression) // it's also OK to skip ==true
+  {
+    // all code blocks with multiple lines should look like this
+  }
+  switch(X)
+  {
+    case A:
+      doSomething();
+      break;
+    case B:
+    case C:
+      doSomethingElse();
+      break;
+    default:
+      // default goes at the bottom
+      break;
+  }
+  return rv; // if necessary
+}
+
+I think that should cover more or less everything.
+
+Have fun hacking!
